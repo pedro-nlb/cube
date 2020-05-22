@@ -1,4 +1,4 @@
-\documentclass[notheorems, hyperref={backref}]{beamer}
+\documentclass[notheorems, hyperref]{beamer}
 
 %% KEY LINES IN THIS TEX FILE %% (enter line number+gg to go)
 
@@ -6,9 +6,9 @@
 % LOCAL FONT DEFINITIONS -- need to come first
 %
 %\usepackage{mathpazo}
-\usepackage{libertine}
-\usepackage[libertine]{newtxmath}
-\usefonttheme[onlymath]{serif}
+%\usepackage{libertine}
+%\usepackage[libertine]{newtxmath}
+%\usefonttheme[onlymath]{serif}
 
 %
 % STANDARD PREAMBLE
@@ -71,6 +71,7 @@
 % Theorems, propositions, etc (dark green)
 \theoremstyle{darkgreentheorem}
 \newtheorem{thm}{Theorem}
+\newtheorem{reform}{Reformulation}
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
@@ -121,20 +122,23 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
 
 %
 % OTHER COMMANDS
 %
 \newcommand{\ot}{\otimes}
 \newcommand{\op}{\oplus}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\M}{\mathcal{M}}
 
 %
 % TITLE PAGE INFORMATION
 %
-\title[Title]{Title}
-\author{Pedro Núñez}
+\title[Seesaw Principle and Theorem of the Cube]{Seesaw Principle and Theorem of the Cube}
+\author{Remarks on Section I.5 of Milne's \textit{Abelian Varieties}}
 \institute{University of Freiburg}
-\date{\today}
+\date{26th May 2020}
  
 %
 % LINKS AND PDF OPTIONS
@@ -154,19 +158,104 @@
   citecolor=linkred,
   urlcolor=linkred}
 \makeatother
-\usecolortheme{orchid}
+\usecolortheme{rose}
  
 \begin{document}
  
 \frame{\titlepage}
  
 \begin{frame}
-\frametitle{Sample frame title}
-This is a text in the first frame. This is a text in the first frame. This is a text in the first frame.
-Here is a formula:
-\[ \chi(\F)=\sum_{i=1}^{\dim{X}}(-1)^{i}h^{i}(X,\F). \]
+    \frametitle{Seesaw Principle --- Idea}
+    \begin{thm}[Weil]
+	A limit of trivial line bundles on a complete variety is again trivial.
+    \end{thm}
+    \pause
+    \[ \downarrow \quad \quad \quad \text{\small{making this idea more precise}} \]
+
+    \begin{thm}[Statement for varieties over $k=\bar{k}$]
+	$V$ complete, $T$ any (``parameter space''), $\L\in \Pic(V\times T)$.
+	Then
+	\begin{center}
+	    \begin{tikzcd}[ampersand replacement=\&]
+		Z:=\{ t\in T\mid \L_{t} \text{ is trivial }\}\arrow[closed]{r} \& T
+	    \end{tikzcd}
+	\end{center}
+	is closed and $\L|_{V\times Z}$ is the pullback of a line bundle on $Z$.
+    \end{thm}
+    \pause
+    This is the conclusion of the subsection on the seesaw principle in \cite{mil08}, which can be read independently.
+    This statement will be used to \textbf{reduce} the Theorem of the Cube to an easier case.
 \end{frame}
- 
+
+\begin{frame}
+    \frametitle{Seesaw Principle --- Generalisation}
+    \begin{thm}[{\cite[Theorem 6.3]{bha17} or \cite[Theorem 5]{fra18}}]
+	Let $f\colon X\to S$ be a proper flat morphism of (locally) noetherian schemes with geometrically integral fibres and let $\L\in X$.
+	Then
+	\begin{center}
+	    \begin{tikzcd}[ampersand replacement=\&]
+		Z:=\{s\in S\mid \L_{s} \text{ is trivial }\}\arrow[closed]{r} \& S
+	    \end{tikzcd}
+	\end{center}
+	and $\L|_{f^{-1}(Z_{\mathrm{red}})}=f^{*}\M_{0}$ for some $\M_{0}\in \Pic(Z_{\mathrm{red}})$.
+	Moreover, there exists a (unique) closed subscheme structure on $Z$ such that $\L|_{f^{-1}(Z)}=f^{*}\M$ for some $\M\in \Pic(Z)$ and $Z$ is universal amongst all (locally) noetherian $S$-schemes with this property.
+    \end{thm}
+    \pause
+    Brian Conrad proves this using existence and separatedness of $\Pic_{X/S}$ \cite[Theorem 3.1.1]{con15}: $\O_{X}$ gives us $[\O_{X}]\colon S\to \Pic_{X/S}$, whose image we identify with $S$, and then $Z=[\L](S)\cap [\O_{X}](S)$.
+    Conversely, assuming $\Pic_{X/S}$ exists, the seesaw theorem implies that it is separated \cite[Remark 2.4.2]{fra18} (automatic if $S=k$).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Seesaw Principle --- Particular case in a picture}
+    \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	    X \& \& Y \\
+	    \& X\times Y\arrow{ul}\arrow[dashed]{dl}\arrow[dashed]{ur}\arrow{dr} \& \\
+	    X \& \& Y \\
+	    \& \&
+	\end{tikzcd}
+    \end{center}
+    \pause
+    We have some $\L\in \Pic(X\times Y)$.
+    We can think of $\L$ as a weight distribution on the two extremes $X$ and $Y$ of this seesaw: the more points $x\in X$ such that $\L|_{\{ x\}\times Y}$ is trivial, the heavier $\L$ sits on $X$.
+    \pause
+
+    In this case, let's say, we have $\L|_{X\times \{y\}}$ trivial for all $y\in Y$.
+    Then $\L$ sits with full weight on $Y$, so the seesaw principle tells us that there must be some line bundle on $Y$ from which $\L$ is the pullback.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem of the Cube --- Statement}
+    \begin{thm}[Statement for varieties over $k=\bar{k}$]
+	$X,Y,Z$ complete and $\L\in \Pic(X\times Y\times Z)$ such that
+	\[ \L|_{X\times Y\times \{z_{0}\}}, \L|_{X\times \{y_{0}\}\times Z} \text{ and }\L|_{\{x_{0}\}\times Y\times Z} \]
+	are trivial.
+	Then $\L$ is trivial.
+    \end{thm}
+    \begin{center}
+	\begin{tikzpicture}
+	    \pgfmathsetmacro{\cubex}{2}
+	    \pgfmathsetmacro{\cubey}{2}
+	    \pgfmathsetmacro{\cubez}{2}
+	    \draw[black,fill=yellow] (0,0,0) -- ++(-\cubex,0,0) -- ++(0,-\cubey,0) -- ++(\cubex,0,0) -- cycle;
+	    \draw[black,fill=yellow] (0,0,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- ++(0,0,\cubez) -- cycle;
+	    \draw[black,fill=yellow] (0,0,0) -- ++(-\cubex,0,0) -- ++(0,0,-\cubez) -- ++(\cubex,0,0) -- cycle;
+	    \draw(-1.5,-1.5,-1.5) node{XY};
+	    \draw(-0.6,0.3,0) node{YZ};
+	    \draw(0.4,-0.6,0) node{XZ};
+	\end{tikzpicture}
+    \end{center}
+    If the restriction of $\L\in \Pic(\mathrm{Cube})$ to each face $XY$, $YZ$ and $XZ$ is trivial, then $\L$ is trivial.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem of the Cube --- Generalisation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{References}
+    \bibliographystyle{alpha}
+    \bibliography{main.bib}
+\end{frame}
+
 \end{document}
-
-
