@@ -227,7 +227,7 @@
 \begin{frame}
     \frametitle{Theorem of the Cube --- Statement}
     \begin{thm}[Statement for varieties over $k=\bar{k}$]
-	$X,Y,Z$ complete and $\L\in \Pic(X\times Y\times Z)$ such that
+	$X,Y$ complete, $Z$ any and $\L\in \Pic(X\times Y\times Z)$ such that
 	\[ \L|_{X\times Y\times \{z_{0}\}}, \L|_{X\times \{y_{0}\}\times Z} \text{ and }\L|_{\{x_{0}\}\times Y\times Z} \]
 	are trivial.
 	Then $\L$ is trivial.
@@ -245,11 +245,31 @@
 	    \draw(0.4,-0.6,0) node{XZ};
 	\end{tikzpicture}
     \end{center}
-    If the restriction of $\L\in \Pic(\mathrm{Cube})$ to each face $XY$, $YZ$ and $XZ$ is trivial, then $\L$ is trivial.
+    If the restriction of $\L\in \Pic(\text{Cube})$ to each face $XY$, $YZ$ and $XZ$ is trivial, then $\L$ is trivial.
 \end{frame}
 
 \begin{frame}
     \frametitle{Theorem of the Cube --- Generalisation}
+    As with the Seesaw principle, it is possible to generalise the Theorem of the Cube to the relative setting, see for example:
+    \begin{enumerate}[label=\textbullet]
+	\item \cite[Corollary 6.8]{bha17} for proper flat schemes with geometrically integral fibres over a noetherian base.
+	\item \cite[Theorem 9]{fra18} for an abelian scheme over a locally noetherian base.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem of the Cube --- An aplication}
+    One application deserving its own name is \cite[Theorem I.5.5]{mil08}:
+    \begin{thm}[Theorem of the Square for varieties over $k=\bar{k}$]
+	Let $A$ be an abelian variety and $\L\in \Pic(A)$.
+	For all $a\in A$ denote $t_{a}\colon A\to A$ the translation by $a$.
+	Then for all $a,b\in A$ we have
+	\[ \L\ot t^{*}_{a+b}\L \cong t^{*}_{a}\L\ot t^{*}_{b}\L. \]
+    \end{thm}
+    \pause
+
+    \marginnote{\dbend} In the relative setting, LHS and RHS will differ by the pullback of a line bundle on the base scheme, so if $\Pic(S)=0$ we still have such an isomorphism but it is not canonical.
+    On the other hand, the isomorphisms in \cite[Corollaries I.5.2--I.5.4]{mil08} are canonical even in the relative setting, cf.~\cite[Corollaries to Theorem 9]{fra18}.
 \end{frame}
 
 \begin{frame}
