@@ -209,9 +209,9 @@
     \frametitle{Seesaw Principle --- Particular case in a picture}
     \begin{center}
 	\begin{tikzcd}[ampersand replacement=\&]
-	    X \& \& Y \\
+	    X \& \& Y\arrow[bend left=30, dashed]{dd} \\
 	    \& X\times Y\arrow{ul}\arrow[dashed]{dl}\arrow[dashed]{ur}\arrow{dr} \& \\
-	    X \& \& Y \\
+	    X\arrow[bend left=30, dashed]{uu} \& \& Y \\
 	    \& \&
 	\end{tikzcd}
     \end{center}
